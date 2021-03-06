@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\packages",
+    "\\StudentManagement",
+    "\\StudentManagement\\bin"
   ],
   "SelectedNode": "\\StudentManagement.sln",
   "PreviewInSolutionExplorer": false
