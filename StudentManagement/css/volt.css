@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700&display=swap);
+
 
 .datepicker {
     display: none
@@ -31331,4 +31331,7 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
     .input-slider-value-output.right:after {
         right: 10px;
         left: auto
+    }
+    .validation-summary-errors ul{
+        list-style: none;
     }
