@@ -118,6 +118,7 @@ namespace StudentManagement.Migrations
 
             context.Sessions.Add(new Session { SessionId = 1, RoomId = 3, SubjectId = 1, ClazzId = 1, ApplicationUserId = "3", NumBerSession = 10, ListStudent = list, StartTime = StartTime, FinishTime = FinishTime, EndTime = EndTime, BeginTime = BeginTime, Status = Session.SessionStatus.ACTIVE });
 
+            context.SessionDetails.Add(new SessionDetail { SessionDetailId = 1, SessionId = 1, SessionDetailName = "Professional Issues in IT", TeacherId = "3", RoomId = 3, SessionDetailCode = "PIIT", DateStart = BeginTime, Status = SessionDetail.SessionDetailStatus.DONE });
 
             base.Seed(context);
         }
