@@ -1,10 +1,15 @@
 {
   "ExpandedNodes": [
+<<<<<<< HEAD
     "",
     "\\packages",
     "\\StudentManagement",
     "\\StudentManagement\\bin"
   ],
   "SelectedNode": "\\StudentManagement.sln",
+=======
+    ""
+  ],
+>>>>>>> 6b650452b24b67fa1cf1453780874f9f1d8eec8f
   "PreviewInSolutionExplorer": false
 }
