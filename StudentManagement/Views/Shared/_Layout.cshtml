@@ -90,8 +90,8 @@
 
     <!-- Volt CSS -->
     <link type="text/css" href="../../css/volt.css" rel="stylesheet">
-
-    <!-- NOTICE: You can use the _analytics.html partial to include production code specific code & trackers -->
+    @* @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr") *@
 
 </head>
 
@@ -504,7 +504,9 @@
 
     <!-- Volt JS -->
     <script src="../../assets/js/volt.js"></script>
-
+    @*@Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)*@
 
 </body>
 
