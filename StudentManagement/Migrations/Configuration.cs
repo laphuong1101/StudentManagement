@@ -127,6 +127,7 @@ namespace StudentManagement.Migrations
 
             TimeSpan StartTime = new TimeSpan(6, 0, 0);
             TimeSpan FinishTime = new TimeSpan(9, 0, 0);
+<<<<<<< HEAD
             DateTime BeginTime = new DateTime(2021, 3, 7);
             DateTime EndTime = new DateTime(2021, 3, 8);
 
@@ -142,6 +143,12 @@ namespace StudentManagement.Migrations
             context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 1, SessionDetailId = 1, ApplicationUserId = "11", Attend = 1, Note = "hello world" });
             context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 1, SessionDetailId = 1, ApplicationUserId = "12", Attend = 1, Note = "hello world" });
             context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 1, SessionDetailId = 1, ApplicationUserId = "13", Attend = 0, Note = "hello world" });
+=======
+            DateTime BeginTime = new DateTime(2021, 3, 5);
+            DateTime EndTime = new DateTime(2021, 3, 14);
+
+            context.Sessions.Add(new Session { SessionId = 1, RoomId = 3, SubjectId = 1, ClazzId = 1, ApplicationUserId = "3", NumBerSession = 10, ListStudent = list, StartTime = StartTime, FinishTime = FinishTime, EndTime = EndTime, BeginTime = BeginTime, Status = Session.SessionStatus.ACTIVE });
+>>>>>>> 8343e594ed494da6b90dc5bb7d684b97aabc3b50
 
             base.Seed(context);
         }

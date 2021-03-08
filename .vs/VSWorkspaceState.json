@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\StudentManagement",
+    "\\StudentManagement\\assets",
+    "\\StudentManagement\\assets\\js"
   ],
+  "SelectedNode": "\\StudentManagement.sln",
   "PreviewInSolutionExplorer": false
 }
