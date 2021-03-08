@@ -25,6 +25,20 @@ namespace StudentManagement.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
 
+            context.Database.ExecuteSqlCommand("DELETE FROM Attendances");
+            context.Database.ExecuteSqlCommand("DELETE FROM Sessions");
+            context.Database.ExecuteSqlCommand("DELETE FROM SessionDetails");
+            context.Database.ExecuteSqlCommand("DELETE FROM Subjects");
+            context.Database.ExecuteSqlCommand("DELETE FROM Clazzs");
+            context.Database.ExecuteSqlCommand("DELETE FROM Rooms");
+
+            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Attendances', RESEED, 0)");
+            context.Database.ExecuteSqlCommand(" DBCC CHECKIDENT('Sessions', RESEED, 0)");
+            context.Database.ExecuteSqlCommand(" DBCC CHECKIDENT('SessionDetails', RESEED, 0)");
+            context.Database.ExecuteSqlCommand(" DBCC CHECKIDENT('Subjects', RESEED, 0)");
+            context.Database.ExecuteSqlCommand(" DBCC CHECKIDENT('Clazzs', RESEED, 0)");
+            context.Database.ExecuteSqlCommand(" DBCC CHECKIDENT('Rooms', RESEED, 0)");
+
             if (UserManager == null)
             {
                 UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
@@ -49,7 +63,7 @@ namespace StudentManagement.Migrations
 
             context.Users.AddOrUpdate(new ApplicationUser() { Id = "1", Name = "Admin", Email = "admin@gmail.com", UserName = "admin@gmail.com", Address = "Ha Noi", Avatar = "https://www.fkbga.com/wp-content/uploads/2018/07/person-icon-6.png", Description = "Admin", EmailConfirmed = false, Status = ApplicationUser.StudentStatus.ACTIVE, PasswordHash = password, PhoneNumber = null, PhoneNumberConfirmed = false, LockoutEndDateUtc = null, LockoutEnabled = false, AccessFailedCount = 0, TwoFactorEnabled = false, SecurityStamp = "1", RollNumber = "Admin" });
             context.Users.AddOrUpdate(new ApplicationUser() { Id = "2", Name = "Hong Hanh", Email = "honghanh@gmail.com", UserName = "honghanh@gmail.com", Address = "Ha Noi", Avatar = "https://www.fkbga.com/wp-content/uploads/2018/07/person-icon-6.png", Description = "Giao Vu", EmailConfirmed = false, Status = ApplicationUser.StudentStatus.ACTIVE, PasswordHash = password, PhoneNumber = null, PhoneNumberConfirmed = false, LockoutEndDateUtc = null, LockoutEnabled = false, AccessFailedCount = 0, TwoFactorEnabled = false, SecurityStamp = "2", RollNumber = "MSG1" });
-            context.Users.AddOrUpdate(new ApplicationUser() { Id = "3", Name = "Dao Hong Luyen", Email = "hongluyenh@gmail.com", UserName = "hongluyen@gmail.com", Address = "Ha Noi", Avatar = "https://www.fkbga.com/wp-content/uploads/2018/07/person-icon-6.png", Description = "Giao Vien", EmailConfirmed = false, Status = ApplicationUser.StudentStatus.ACTIVE, PasswordHash = password, PhoneNumber = null, PhoneNumberConfirmed = false, LockoutEndDateUtc = null, LockoutEnabled = false, AccessFailedCount = 0, TwoFactorEnabled = false, SecurityStamp = "1", RollNumber = "GV1" });
+            context.Users.AddOrUpdate(new ApplicationUser() { Id = "3", Name = "Dao Hong Luyen", Email = "hongluyen@gmail.com", UserName = "hongluyen@gmail.com", Address = "Ha Noi", Avatar = "https://www.fkbga.com/wp-content/uploads/2018/07/person-icon-6.png", Description = "Giao Vien", EmailConfirmed = false, Status = ApplicationUser.StudentStatus.ACTIVE, PasswordHash = password, PhoneNumber = null, PhoneNumberConfirmed = false, LockoutEndDateUtc = null, LockoutEnabled = false, AccessFailedCount = 0, TwoFactorEnabled = false, SecurityStamp = "1", RollNumber = "GV1" });
             context.Users.AddOrUpdate(new ApplicationUser() { Id = "4", Name = "La Phuong", Email = "laphuong@gmail.com", UserName = "laphuong@gmail.com", Address = "Ha Noi", Avatar = "https://www.fkbga.com/wp-content/uploads/2018/07/person-icon-6.png", Description = "Sinh Vien", EmailConfirmed = false, Status = ApplicationUser.StudentStatus.ACTIVE, PasswordHash = password, PhoneNumber = null, PhoneNumberConfirmed = false, LockoutEndDateUtc = null, LockoutEnabled = false, AccessFailedCount = 0, TwoFactorEnabled = false, SecurityStamp = "1", RollNumber = "D00631" });
             context.Users.AddOrUpdate(new ApplicationUser() { Id = "5", Name = "Van Hien", Email = "vanhien@gmail.com", UserName = "vanhien@gmail.com", Address = "Ha Noi", Avatar = "https://www.fkbga.com/wp-content/uploads/2018/07/person-icon-6.png", Description = "Sinh Vien", EmailConfirmed = false, Status = ApplicationUser.StudentStatus.ACTIVE, PasswordHash = password, PhoneNumber = null, PhoneNumberConfirmed = false, LockoutEndDateUtc = null, LockoutEnabled = false, AccessFailedCount = 0, TwoFactorEnabled = false, SecurityStamp = "1", RollNumber = "D00632" });
             context.Users.AddOrUpdate(new ApplicationUser() { Id = "6", Name = "Dinh Nam", Email = "dinhnam@gmail.com", UserName = "dinhnam@gmail.com", Address = "Ha Noi", Avatar = "https://www.fkbga.com/wp-content/uploads/2018/07/person-icon-6.png", Description = "Sinh Vien", EmailConfirmed = false, Status = ApplicationUser.StudentStatus.ACTIVE, PasswordHash = password, PhoneNumber = null, PhoneNumberConfirmed = false, LockoutEndDateUtc = null, LockoutEnabled = false, AccessFailedCount = 0, TwoFactorEnabled = false, SecurityStamp = "1", RollNumber = "D00633" });
@@ -113,11 +127,21 @@ namespace StudentManagement.Migrations
 
             TimeSpan StartTime = new TimeSpan(6, 0, 0);
             TimeSpan FinishTime = new TimeSpan(9, 0, 0);
-            DateTime BeginTime = new DateTime(2021, 3, 5);
-            DateTime EndTime = new DateTime(2021, 3, 14);
+            DateTime BeginTime = new DateTime(2021, 3, 7);
+            DateTime EndTime = new DateTime(2021, 3, 8);
 
-            context.Sessions.Add(new Session { SessionId = 1, RoomId = 3, SubjectId = 1, ClazzId = 1, ApplicationUserId = "3", NumBerSession = 10, ListStudent = list, StartTime = StartTime, FinishTime = FinishTime, EndTime = EndTime, BeginTime = BeginTime, Status = Session.SessionStatus.ACTIVE });
-
+            context.Sessions.Add(new Session { SessionId = 1, RoomId = 3, SubjectId = 1, ClazzId = 1, ApplicationUserId = "3", NumBerSession = 1, ListStudent = list, StartTime = StartTime, FinishTime = FinishTime, EndTime = EndTime, BeginTime = BeginTime, Status = Session.SessionStatus.ACTIVE });
+            context.SessionDetails.AddOrUpdate(new SessionDetail { SessionDetailId = 1, SessionDetailCode = "ASP01", SessionDetailName = "ASP01", SessionId = 1, TeacherId = "3", RoomId = 3, DateStart = new DateTime(2021, 3, 7), Status = SessionDetail.SessionDetailStatus.UPCOMING });
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 1, SessionDetailId = 1, ApplicationUserId = "4", Attend = 1, Note = "hello world" });
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 1, SessionDetailId = 1, ApplicationUserId = "5", Attend = 0, Note = "hello world" });
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 1, SessionDetailId = 1, ApplicationUserId = "6", Attend = 1, Note = "hello world" });
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 1, SessionDetailId = 1, ApplicationUserId = "7", Attend = 1, Note = "hello world" });
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 1, SessionDetailId = 1, ApplicationUserId = "8", Attend = 1, Note = "hello world" });
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 1, SessionDetailId = 1, ApplicationUserId = "9", Attend = 1, Note = "hello world" });
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 1, SessionDetailId = 1, ApplicationUserId = "10", Attend = 1, Note = "hello world" });
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 1, SessionDetailId = 1, ApplicationUserId = "11", Attend = 1, Note = "hello world" });
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 1, SessionDetailId = 1, ApplicationUserId = "12", Attend = 1, Note = "hello world" });
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 1, SessionDetailId = 1, ApplicationUserId = "13", Attend = 0, Note = "hello world" });
 
             base.Seed(context);
         }
