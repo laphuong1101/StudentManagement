@@ -1,0 +1,115 @@
+﻿@model IEnumerable<StudentManagement.Models.Clazz>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh sách lớp học</h2>
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
+    <div>
+        <a class="btn btn-secondary text-dark me-2" href="@Url.Action("Create", "Clazzs")">
+            <span class="fas fa-plus me-2"></span>Thêm mới
+        </a>
+    </div>
+</div>
+
+
+
+
+<div class="card card-body shadow-sm table-wrapper table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ClazzCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ClazzName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ListStudentId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model) {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClazzCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClazzName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ListStudentId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <button class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="icon icon-sm">
+                                    <span class="fas fa-ellipsis-h icon-dark"></span>
+                                </span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <div class="dropdown-menu py-0">
+                                <a class="dropdown-item rounded-top" href="@Url.Action("Edit", "Clazzs", new { id = item.ClazzId })">
+                                    <span class="fas fa-eye me-2"></span>Chi tiết
+                                </a>
+                                <a class="dropdown-item" href="@Url.Action("Details", "Clazzs", new { id = item.ClazzId })">
+                                    <span class="fas fa-edit me-2"></span>Sửa
+                                </a>
+                                <a class="dropdown-item text-danger rounded-bottom" href="@Url.Action("Delete", "Clazzs", new { id = item.ClazzId })">
+                                    <span class="fas fa-trash-alt me-2"></span>Xóa
+                                </a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="card-footer px-3 border-0 d-flex align-items-center justify-content-between">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination mb-0">
+                <li class="page-item">
+                    <a class="page-link" href="#">Previous</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">1</a>
+                </li>
+                <li class="page-item active">
+                    <a class="page-link" href="#">2</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">3</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">4</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">5</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="fw-bold small d-none d-lg-block">Showing <b>5</b> out of <b>25</b> entries</div>
+    </div>
+</div>
