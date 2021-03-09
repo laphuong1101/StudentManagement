@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -75,6 +76,7 @@ namespace StudentManagement.Controllers
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            Debug.WriteLine(result);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -233,7 +235,8 @@ namespace StudentManagement.Controllers
         [AllowAnonymous]
         public ActionResult ResetPassword(string code)
         {
-            return code == null ? View("Error") : View();
+            return View("ResetPassword");
+            //return code == null ? View("Error") : View();
         }
 
         //
@@ -448,7 +451,7 @@ namespace StudentManagement.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return View("Profile");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult
@@ -480,5 +483,14 @@ namespace StudentManagement.Controllers
             }
         }
         #endregion
+        public ActionResult TableTemplate()
+        {
+            return View("TableTemplate");
+        }
+        [AllowAnonymous]
+        public ActionResult Profile()
+        {
+            return View("Profile");
+        }
     }
 }
