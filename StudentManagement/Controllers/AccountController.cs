@@ -487,5 +487,10 @@ namespace StudentManagement.Controllers
         {
             return View("TableTemplate");
         }
+        [AllowAnonymous]
+        public ActionResult Profile()
+        {
+            return View("Profile");
+        }
     }
 }

@@ -1,6 +1,8 @@
 {
   "ExpandedNodes": [
     "",
+    "\\StudentManagement",
+    "\\StudentManagement\\App_Data",
     "\\StudentManagement\\assets",
     "\\StudentManagement\\assets\\js"
   ],
