@@ -1,0 +1,97 @@
+﻿@model IEnumerable<StudentManagement.Models.Session>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
+    <div class="d-block mb-4 mb-md-0">
+        <h2 class="h4">Thống kê điểm danh</h2>
+    </div>
+</div>
+<div class="table-settings mb-4">
+    <div class="row align-items-center justify-content-between">
+        <div class="col col-md-6 col-lg-3 col-xl-4">
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon2"><span class="fas fa-search"></span></span>
+                <input type="text" class="form-control" id="exampleInputIconLeft" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card card-body shadow-sm table-wrapper table-responsive mb-3">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Môn học</th>
+                <th>Lớp</th>
+                <th>Phòng học</th>
+                <th>Số buổi</th>
+                <th>Ngày bắt đầu</th>
+                <th>Ngày kết thúc</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Item -->
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    <span class="fw-normal">@item.SessionId</span>
+                </td>
+                <td>
+                    <span class="fw-normal">@item.Subject.SubjectName</span>
+                </td>
+                <td>
+                    <span class="fw-normal">@item.Clazz.ClazzName</span>
+                </td>
+                <td><span class="fw-normal">@item.Room.RoomName</span></td>
+                <td><span class="fw-normal">@item.NumBerSession</span></td>
+                <td><span class="fw-normal">@item.BeginTime</span></td>
+                <td><span class="fw-normal">@item.EndTime</span></td>
+                <td>
+                    <a class="dropdown-item rounded-top" 
+                       href="@Url.Action("GetDetailSession", "Statistic")/@item.SessionId">
+                        Chi tiết
+                    </a>                    
+                </td>
+            </tr>
+            }
+
+            <!-- Item -->
+        </tbody>
+    </table>
+    @*<div class="card-footer px-3 border-0 d-flex align-items-center justify-content-between">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination mb-0">
+                <li class="page-item">
+                    <a class="page-link" href="#">Previous</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">1</a>
+                </li>
+                <li class="page-item active">
+                    <a class="page-link" href="#">2</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">3</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">4</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">5</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="fw-bold small d-none d-lg-block">Showing <b>5</b> out of <b>25</b> entries</div>
+    </div>*@
+</div>
+
+
