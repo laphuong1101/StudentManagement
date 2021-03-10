@@ -54,7 +54,7 @@
                 <td><span class="fw-normal">@item.EndTime</span></td>
                 <td>
                     <a class="dropdown-item rounded-top" 
-                       href="@Url.Action("GetDetailSession", "Statistic")/@item.SessionId">
+                       href="@Url.Action("GetDetailSession", "Statistic", new { id = @item.SessionId })">
                         Chi tiết
                     </a>                    
                 </td>

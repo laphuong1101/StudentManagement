@@ -32,6 +32,17 @@ namespace StudentManagement.Controllers
             {
                 return HttpNotFound();
             }
+            var ListstudentID = clazz.ListStudentId.Split(',').ToList();
+            var ListStudent = new List<ApplicationUser>();
+            foreach(var userId in ListstudentID)
+            {
+                var student = db.Users.Find(userId);
+                if (student != null)
+                {
+                    ListStudent.Add(student);
+                }
+            }
+            ViewData["ListStudent"] = ListStudent;
             return View(clazz);
         }
 
