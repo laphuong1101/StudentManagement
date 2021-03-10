@@ -168,6 +168,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ClazzsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StatisticController.cs" />
@@ -260,8 +261,16 @@
     <Content Include="Views\Shared\_Login.cshtml" />
     <Content Include="Views\Account\Profile.cshtml" />
     <Content Include="Views\Account\TableTemplate.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Statistic\Index.cshtml" />
     <Content Include="Views\Statistic\GetDetailSession.cshtml" />
+=======
+    <Content Include="Views\Clazzs\Create.cshtml" />
+    <Content Include="Views\Clazzs\Delete.cshtml" />
+    <Content Include="Views\Clazzs\Details.cshtml" />
+    <Content Include="Views\Clazzs\Edit.cshtml" />
+    <Content Include="Views\Clazzs\Index.cshtml" />
+>>>>>>> ea82f4fa7324b2c80718e35ce204397984c24a1f
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

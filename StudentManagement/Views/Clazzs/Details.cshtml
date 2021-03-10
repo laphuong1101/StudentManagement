@@ -1,0 +1,59 @@
+﻿@model StudentManagement.Models.Clazz
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Clazz</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ClazzName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClazzName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClazzCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClazzCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ListStudentId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ListStudentId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ClazzId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

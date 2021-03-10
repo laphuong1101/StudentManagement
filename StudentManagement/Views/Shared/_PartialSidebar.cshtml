@@ -7,7 +7,7 @@
                     <img src="../../assets/img/team/profile-picture-3.jpg" class="card-img-top rounded-circle border-white"
                          alt="Bonnie Green">
                 </div>
-                <div class="d-block">
+                <div class="d-block name_user">
                     <h2 class="h6">Chào, Phương</h2>
                     @*<a class="btn btn-secondary text-dark btn-xs">
                             <span class="me-2"><span class="fas fa-sign-out-alt"></span></span>Sign Out
@@ -106,10 +106,34 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link">
-                    <span class="sidebar-icon"><span class="fas fa-file-alt"></span></span>
-                    <span class="sidebar-text">Quản lý tài khoản</span>
-                </a>
+                <span class="nav-link  collapsed  d-flex justify-content-between align-items-center"
+                      data-bs-toggle="collapse" data-bs-target="#management-pages">
+                    <span>
+                        <span class="sidebar-icon"><span class="far fa-user"></span></span>
+                        <span class="sidebar-text">Quản lý tài khoản</span>
+                    </span>
+                    <span class="link-arrow"><span class="fas fa-chevron-right"></span></span>
+                </span>
+                <div class="multi-level collapse " role="list"
+                     id="management-pages" aria-expanded="false">
+                    <ul class="flex-column nav">
+                        <li class="nav-item">
+                            <a class="nav-link">
+                                <span class="sidebar-text">Sinh viên</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link">
+                                <span class="sidebar-text">Giáo viên</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link">
+                                <span class="sidebar-text">Giáo vụ</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </li>
             <li class="nav-item">
                 <a class="nav-link">

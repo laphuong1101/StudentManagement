@@ -24808,9 +24808,15 @@ textarea.form-control-lg {
     .sidebar.contracted .sidebar-icon {
         text-align: center
     }
+    .sidebar.contracted .name_user{
+        display: none !important;
+    }
+    .sidebar.contracted .user-avatar {
+        margin-right: 0 !important;
+    }
 
-@media (min-width:768px) {
-    .sidebar.contracted + .content {
+    @media (min-width:768px) {
+        .sidebar.contracted + .content {
         margin-left: 95px
     }
 }
