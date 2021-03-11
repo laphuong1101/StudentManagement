@@ -1,0 +1,73 @@
+﻿@model IEnumerable<StudentManagement.Models.Session>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
+    <div class="d-block mb-4 mb-md-0">
+        <h2 class="h4">Thống kê điểm danh</h2>
+    </div>
+</div>
+<div class="table-settings mb-4">
+    <div class="row align-items-center justify-content-between">
+        <div class="col col-md-6 col-lg-3 col-xl-4">
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon2"><span class="fas fa-search"></span></span>
+                <input type="text" class="form-control" id="exampleInputIconLeft" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card card-body shadow-sm table-wrapper table-responsive mb-3">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Môn học</th>
+                <th>Lớp</th>
+                <th>Phòng học</th>
+                <th>Số buổi</th>
+                <th>Ngày bắt đầu</th>
+                <th>Ngày kết thúc</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Item -->
+            @foreach (var item in (List<StudentManagement.Models.Session>)ViewData["ListSession"])
+            {
+            <tr>
+                <td>
+                    <span class="fw-normal">@item.SessionId</span>
+                </td>
+                <td>
+                    <span class="fw-normal">@item.Subject.SubjectName</span>
+                </td>
+                <td>
+                    <span class="fw-normal">@item.Clazz.ClazzName</span>
+                </td>
+                <td><span class="fw-normal">@item.Room.RoomName</span></td>
+                <td><span class="fw-normal">@item.NumBerSession</span></td>
+                <td><span class="fw-normal">
+                    @item.BeginTime.ToString("dd/MM/yyyy")
+                </span></td>
+                <td><span class="fw-normal">
+                    @item.EndTime.ToString("dd/MM/yyyy")
+                </span></td>
+                <td>
+                    <a class="dropdown-item rounded-top" 
+                       href="@Url.Action("GetDetailSession", "Statistic", new { id = @item.SessionId})">
+                        Chi tiết
+                    </a>                    
+                </td>
+            </tr>
+            }
+
+            <!-- Item -->
+        </tbody>
+    </table>
+</div>
+
+

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -52,12 +53,15 @@ namespace StudentManagement.Controllers
                 _userManager = value;
             }
         }
-
         //
         // GET: /Account/Login
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("GetProfile", "Account");
+            }
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
@@ -88,6 +92,7 @@ namespace StudentManagement.Controllers
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            Debug.WriteLine(result);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -247,7 +252,8 @@ namespace StudentManagement.Controllers
         [AllowAnonymous]
         public ActionResult ResetPassword(string code)
         {
-            return code == null ? View("Error") : View();
+            return View("ResetPassword");
+            //return code == null ? View("Error") : View();
         }
 
         //
@@ -398,14 +404,11 @@ namespace StudentManagement.Controllers
             return View(model);
         }
 
-        //
-        // POST: /Account/LogOff
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpGet]
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account");
         }
 
         //
@@ -462,7 +465,7 @@ namespace StudentManagement.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("GetProfile", "Account");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult
@@ -494,5 +497,18 @@ namespace StudentManagement.Controllers
             }
         }
         #endregion
+        public ActionResult TableTemplate()
+        {
+            return View("TableTemplate");
+        }
+        [AllowAnonymous]
+        public ActionResult GetProfile()
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                var currentUser = db.Users.Find(User.Identity.GetUserId());
+                return View("Profile", currentUser);
+            }
+        }
     }
 }

@@ -1,0 +1,132 @@
+﻿@model IEnumerable<StudentManagement.Models.SessionDetail>  
+
+@{
+    ViewBag.Title = "GetDetailSession";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var Session = ViewData["session"];
+}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
+    <div class="d-block mb-4 mb-md-0">
+        <h2 class="h4">Thống kê chi tiết</h2>
+    </div>
+</div>
+
+<div class="card card-body shadow-sm table-wrapper mb-3">
+    <div>
+        Thông tin lớp học
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Môn học</th>
+                <th>Số lượng sinh viên</th>
+                <th>Số buổi hoàn thành</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <span class="fw-normal">@ViewData["SubjectName"]</span>
+                </td>              
+                <td>
+                    <span class="fw-normal">@ViewData["numberStudent"]</span>
+                </td>
+                <td>
+                    <span class="fw-normal">
+                        @ViewData["numberSessionComplete"]/@ViewData["numberSession"]
+                    </span>
+                </td>                
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="card card-body shadow-sm table-wrapper mb-3">
+    <div>
+        Chi tiết lớp học
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Buổi</th>
+                <th>Phòng học</th>
+                <th>Ngày học</th>
+                <th>Trạng thái</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Item -->
+            @foreach (var item in (List<StudentManagement.Models.SessionDetail>)ViewData["ListSessionDetail"])
+            {
+            <tr>
+                <td>
+                    <span class="fw-normal">@item.SessionId</span>
+                </td>
+                <td>
+                    <span class="fw-normal">@item.RoomId</span>
+                </td>
+                <td>
+                    <span class="fw-normal">@item.DateStart</span>
+                </td>
+                <td>
+                    <span class="fw-normal">@item.Status</span>
+                </td>
+            </tr>
+            }
+
+            <!-- Item -->
+        </tbody>
+    </table>
+</div>
+
+<div class="card card-body shadow-sm table-wrapper mb-3">
+    <div>
+        Danh sách sinh viên
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Họ và tên</th>
+                <th>MSSV</th>
+                <th>Email</th>
+                <th>Số điện thoại</th>
+                <th>Số buổi tham gia</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Item -->
+            @foreach (var item in (List<StudentManagement.Models.ApplicationUser>)ViewData["ListStudent"])
+            {
+            <tr>
+                <td>
+                    <span class="fw-normal">@item.UserName</span>
+                </td>
+                <td>
+                    <span class="fw-normal">@item.RollNumber</span>
+                </td>
+                <td>
+                    <span class="fw-normal">@item.Email</span>
+                </td>
+                <td>
+                    <span class="fw-normal">@item.PhoneNumber</span>
+                </td>
+                <td>
+                    <span class="fw-normal">
+                        @{ 
+                            var numberAttend = item.GetNumberAttend(item.Id.ToString());
+                            var numberSession = (int)ViewData["numberSession"];
+                        }
+
+                        @numberAttend/@numberSession
+                        (@item.CalculatorPercentAttend(numberAttend, numberSession)%)
+                    </span>
+                </td>
+            </tr>
+            }
+
+            <!-- Item -->
+        </tbody>
+    </table>
+</div>
+
