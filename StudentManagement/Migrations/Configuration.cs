@@ -1,4 +1,4 @@
-﻿namespace StudentManagement.Migrations
+namespace StudentManagement.Migrations
 {
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
@@ -76,10 +76,23 @@
             context.Users.AddOrUpdate(new ApplicationUser() { Id = "12", Name = "Duy Phuong", Email = "duyphuong@gmail.com", UserName = "duyphuong@gmail.com", Address = "Ha Noi", Avatar = "https://www.fkbga.com/wp-content/uploads/2018/07/person-icon-6.png", Description = "Sinh Vien", EmailConfirmed = false, Status = ApplicationUser.StudentStatus.ACTIVE, PasswordHash = password, PhoneNumber = null, PhoneNumberConfirmed = false, LockoutEndDateUtc = null, LockoutEnabled = false, AccessFailedCount = 0, TwoFactorEnabled = false, SecurityStamp = "1", RollNumber = "D00639" });
             context.Users.AddOrUpdate(new ApplicationUser() { Id = "13", Name = "Kim Nghi", Email = "kimnghi@gmail.com", UserName = "kimnghi@gmail.com", Address = "Ha Noi", Avatar = "https://www.fkbga.com/wp-content/uploads/2018/07/person-icon-6.png", Description = "Sinh Vien", EmailConfirmed = false, Status = ApplicationUser.StudentStatus.ACTIVE, PasswordHash = password, PhoneNumber = null, PhoneNumberConfirmed = false, LockoutEndDateUtc = null, LockoutEnabled = false, AccessFailedCount = 0, TwoFactorEnabled = false, SecurityStamp = "1", RollNumber = "D00640" });
 
+
+
+            context.Users.AddOrUpdate(new ApplicationUser() { Id = "14", Name = "Đặng Kim Thi", Email = "thidk@gmail.com", UserName = "thidk@gmail.com", Address = "Cầu Giấy, Hà Nội", Avatar = "https://www.fkbga.com/wp-content/uploads/2018/07/person-icon-6.png", Description = "Giáo Viên", EmailConfirmed = false, Status = ApplicationUser.StudentStatus.ACTIVE, PasswordHash = password, PhoneNumber = null, PhoneNumberConfirmed = false, LockoutEndDateUtc = null, LockoutEnabled = false, AccessFailedCount = 0, TwoFactorEnabled = false, SecurityStamp = "1", RollNumber = "GV2" });
+
+            context.Users.AddOrUpdate(new ApplicationUser() { Id = "15", Name = "Hà Kiều Trang", Email = "tranghk@gmail.com", UserName = "tranghk@gmail.com", Address = "Ha Noi", Avatar = "https://www.fkbga.com/wp-content/uploads/2018/07/person-icon-6.png", Description = "Giáo Viên", EmailConfirmed = false, Status = ApplicationUser.StudentStatus.ACTIVE, PasswordHash = password, PhoneNumber = null, PhoneNumberConfirmed = false, LockoutEndDateUtc = null, LockoutEnabled = false, AccessFailedCount = 0, TwoFactorEnabled = false, SecurityStamp = "1", RollNumber = "GV3" });
+
+            context.Users.AddOrUpdate(new ApplicationUser() { Id = "16", Name = "Nguyễn Mạc Lương", Email = "luongnm@gmail.com", UserName = "luongnm@gmail.com", Address = "Ha Noi", Avatar = "https://www.fkbga.com/wp-content/uploads/2018/07/person-icon-6.png", Description = "Giáo Viên", EmailConfirmed = false, Status = ApplicationUser.StudentStatus.ACTIVE, PasswordHash = password, PhoneNumber = null, PhoneNumberConfirmed = false, LockoutEndDateUtc = null, LockoutEnabled = false, AccessFailedCount = 0, TwoFactorEnabled = false, SecurityStamp = "1", RollNumber = "GV4" });
+
+            context.Users.AddOrUpdate(new ApplicationUser() { Id = "17", Name = "Lê Viết Khánh", Email = "levk@gmail.com", UserName = "levk@gmail.com", Address = "Ha Noi", Avatar = "https://www.fkbga.com/wp-content/uploads/2018/07/person-icon-6.png", Description = "Giáo Viên", EmailConfirmed = false, Status = ApplicationUser.StudentStatus.ACTIVE, PasswordHash = password, PhoneNumber = null, PhoneNumberConfirmed = false, LockoutEndDateUtc = null, LockoutEnabled = false, AccessFailedCount = 0, TwoFactorEnabled = false, SecurityStamp = "1", RollNumber = "GV5" });
+
+            context.Users.AddOrUpdate(new ApplicationUser() { Id = "18", Name = "Lý Hạnh Thương", Email = "lyht@gmail.com", UserName = "lyht@gmail.com", Address = "Ha Noi", Avatar = "https://www.fkbga.com/wp-content/uploads/2018/07/person-icon-6.png", Description = "Giáo Viên", EmailConfirmed = false, Status = ApplicationUser.StudentStatus.ACTIVE, PasswordHash = password, PhoneNumber = null, PhoneNumberConfirmed = false, LockoutEndDateUtc = null, LockoutEnabled = false, AccessFailedCount = 0, TwoFactorEnabled = false, SecurityStamp = "1", RollNumber = "GV6" });
+
             //role
             UserManager.AddToRole("1", "Admin");
             UserManager.AddToRole("2", "Manager");
             UserManager.AddToRole("3", "Teacher");
+
             UserManager.AddToRole("4", "Student");
             UserManager.AddToRole("5", "Student");
             UserManager.AddToRole("6", "Student");
@@ -90,6 +103,12 @@
             UserManager.AddToRole("11", "Student");
             UserManager.AddToRole("12", "Student");
             UserManager.AddToRole("13", "Student");
+
+            UserManager.AddToRole("14", "Teacher");
+            UserManager.AddToRole("15", "Teacher");
+            UserManager.AddToRole("16", "Teacher");
+            UserManager.AddToRole("17", "Teacher");
+            UserManager.AddToRole("18", "Teacher");
 
             IList<Room> rooms = new List<Room>();
             IList<Clazz> clazzs = new List<Clazz>();
@@ -186,15 +205,18 @@
             context.Sessions.Add(new Session { SessionId = 4, RoomId = 3, SubjectId = 4, ClazzId = 4, ApplicationUserId = "3", NumBerSession = 1, ListStudent = list, StartTime = new TimeSpan(14, 45, 0), FinishTime = new TimeSpan(17, 45, 0), EndTime = EndTime, BeginTime = BeginTime, Status = Session.SessionStatus.ACTIVE });
             context.Sessions.Add(new Session { SessionId = 5, RoomId = 3, SubjectId = 5, ClazzId = 5, ApplicationUserId = "3", NumBerSession = 1, ListStudent = list, StartTime = new TimeSpan(18, 0, 0), FinishTime = new TimeSpan(21, 0, 0), EndTime = EndTime, BeginTime = BeginTime, Status = Session.SessionStatus.ACTIVE });
 
-            context.Sessions.Add(new Session { SessionId = 6, RoomId = 1, SubjectId = 1, ClazzId = 1, ApplicationUserId = "3", NumBerSession = 2, ListStudent = list, StartTime = new TimeSpan(18, 0, 0), FinishTime = new TimeSpan(21, 0, 0), EndTime = EndTime, BeginTime = BeginTime, Status = Session.SessionStatus.ACTIVE });
-            context.Sessions.Add(new Session { SessionId = 7, RoomId = 2, SubjectId = 1, ClazzId = 2, ApplicationUserId = "3", NumBerSession = 1, ListStudent = list, StartTime = new TimeSpan(18, 0, 0), FinishTime = new TimeSpan(21, 0, 0), EndTime = EndTime, BeginTime = BeginTime, Status = Session.SessionStatus.ACTIVE });
-            context.Sessions.Add(new Session { SessionId = 8, RoomId = 4, SubjectId = 2, ClazzId = 3, ApplicationUserId = "3", NumBerSession = 1, ListStudent = list, StartTime = new TimeSpan(18, 0, 0), FinishTime = new TimeSpan(21, 0, 0), EndTime = EndTime, BeginTime = BeginTime, Status = Session.SessionStatus.ACTIVE });
-            context.Sessions.Add(new Session { SessionId = 9, RoomId = 5, SubjectId = 4, ClazzId = 4, ApplicationUserId = "3", NumBerSession = 1, ListStudent = list, StartTime = new TimeSpan(18, 0, 0), FinishTime = new TimeSpan(21, 0, 0), EndTime = EndTime, BeginTime = BeginTime, Status = Session.SessionStatus.ACTIVE });
-            context.Sessions.Add(new Session { SessionId = 10, RoomId = 6, SubjectId = 5, ClazzId = 5, ApplicationUserId = "3", NumBerSession = 1, ListStudent = list, StartTime = new TimeSpan(18, 0, 0), FinishTime = new TimeSpan(21, 0, 0), EndTime = EndTime, BeginTime = BeginTime, Status = Session.SessionStatus.ACTIVE });
+            context.Sessions.Add(new Session { SessionId = 6, RoomId = 6, SubjectId = 1, ClazzId = 1, ApplicationUserId = "14", NumBerSession = 2, ListStudent = list, StartTime = new TimeSpan(18, 0, 0), FinishTime = new TimeSpan(21, 0, 0), EndTime = new DateTime(2021, 3, 11), BeginTime = new DateTime(2021, 3, 11), Status = Session.SessionStatus.ACTIVE });
+            context.Sessions.Add(new Session { SessionId = 7, RoomId = 7, SubjectId = 1, ClazzId = 2, ApplicationUserId = "15", NumBerSession = 1, ListStudent = list, StartTime = new TimeSpan(18, 0, 0), FinishTime = new TimeSpan(21, 0, 0), EndTime = EndTime, BeginTime = BeginTime, Status = Session.SessionStatus.ACTIVE });
+            context.Sessions.Add(new Session { SessionId = 8, RoomId = 8, SubjectId = 2, ClazzId = 3, ApplicationUserId = "16", NumBerSession = 1, ListStudent = list, StartTime = new TimeSpan(18, 0, 0), FinishTime = new TimeSpan(21, 0, 0), EndTime = EndTime, BeginTime = BeginTime, Status = Session.SessionStatus.ACTIVE });
+            context.Sessions.Add(new Session { SessionId = 9, RoomId = 9, SubjectId = 4, ClazzId = 4, ApplicationUserId = "17", NumBerSession = 1, ListStudent = list, StartTime = new TimeSpan(18, 0, 0), FinishTime = new TimeSpan(21, 0, 0), EndTime = EndTime, BeginTime = BeginTime, Status = Session.SessionStatus.ACTIVE });
+            context.Sessions.Add(new Session { SessionId = 10, RoomId = 10, SubjectId = 5, ClazzId = 8, ApplicationUserId = "18", NumBerSession = 1, ListStudent = list, StartTime = new TimeSpan(18, 0, 0), FinishTime = new TimeSpan(21, 0, 0), EndTime = EndTime, BeginTime = BeginTime, Status = Session.SessionStatus.ACTIVE });
 
             //sessiondetail
             context.SessionDetails.AddOrUpdate(new SessionDetail { SessionDetailId = 1, SessionDetailCode = "ASP01", SessionDetailName = "ASP01", SessionId = 1, TeacherId = "3", RoomId = 3, DateStart = new DateTime(2021, 3, 7), Status = SessionDetail.SessionDetailStatus.UPCOMING });
             context.SessionDetails.AddOrUpdate(new SessionDetail { SessionDetailId = 2, SessionDetailCode = "ASP02", SessionDetailName = "ASP02", SessionId = 1, TeacherId = "3", RoomId = 3, DateStart = new DateTime(2021, 3, 7), Status = SessionDetail.SessionDetailStatus.UPCOMING });
+
+            context.SessionDetails.AddOrUpdate(new SessionDetail { SessionDetailId = 3, SessionDetailCode = "ASP03", SessionDetailName = "ASP03", SessionId = 1, TeacherId = "14", RoomId = 6, DateStart = new DateTime(2021, 3, 11), Status = SessionDetail.SessionDetailStatus.UPCOMING });
+            context.SessionDetails.AddOrUpdate(new SessionDetail { SessionDetailId = 4, SessionDetailCode = "ASP04", SessionDetailName = "ASP04", SessionId = 1, TeacherId = "14", RoomId = 6, DateStart = new DateTime(2021, 3, 11), Status = SessionDetail.SessionDetailStatus.UPCOMING });
 
             //attendance
             context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 1, SessionDetailId = 1, ApplicationUserId = "4", Attend = 1, Note = "hello world" });
@@ -207,6 +229,39 @@
             context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 1, SessionDetailId = 1, ApplicationUserId = "11", Attend = 1, Note = "hello world" });
             context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 1, SessionDetailId = 1, ApplicationUserId = "12", Attend = 1, Note = "hello world" });
             context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 1, SessionDetailId = 1, ApplicationUserId = "13", Attend = 0, Note = "hello world" });
+
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 2, SessionDetailId = 2, ApplicationUserId = "4", Attend = 1, Note = "hello world" });
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 2, SessionDetailId = 2, ApplicationUserId = "5", Attend = 0, Note = "hello world" });
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 2, SessionDetailId = 2, ApplicationUserId = "6", Attend = 1, Note = "hello world" });
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 2, SessionDetailId = 2, ApplicationUserId = "7", Attend = 1, Note = "hello world" });
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 2, SessionDetailId = 2, ApplicationUserId = "8", Attend = 1, Note = "hello world" });
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 2, SessionDetailId = 2, ApplicationUserId = "9", Attend = 1, Note = "hello world" });
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 2, SessionDetailId = 2, ApplicationUserId = "10", Attend = 1, Note = "hello world" });
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 2, SessionDetailId = 2, ApplicationUserId = "11", Attend = 1, Note = "hello world" });
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 2, SessionDetailId = 2, ApplicationUserId = "12", Attend = 1, Note = "hello world" });
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 2, SessionDetailId = 2, ApplicationUserId = "13", Attend = 0, Note = "hello world" });
+
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 3, SessionDetailId = 3, ApplicationUserId = "4", Attend = 1, Note = "hello world" });
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 3, SessionDetailId = 3, ApplicationUserId = "5", Attend = 0, Note = "hello world" });
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 3, SessionDetailId = 3, ApplicationUserId = "6", Attend = 1, Note = "hello world" });
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 3, SessionDetailId = 3, ApplicationUserId = "7", Attend = 1, Note = "hello world" });
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 3, SessionDetailId = 3, ApplicationUserId = "8", Attend = 1, Note = "hello world" });
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 3, SessionDetailId = 3, ApplicationUserId = "9", Attend = 1, Note = "hello world" });
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 3, SessionDetailId = 3, ApplicationUserId = "10", Attend = 1, Note = "hello world" });
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 3, SessionDetailId = 3, ApplicationUserId = "11", Attend = 1, Note = "hello world" });
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 3, SessionDetailId = 3, ApplicationUserId = "12", Attend = 1, Note = "hello world" });
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 3, SessionDetailId = 3, ApplicationUserId = "13", Attend = 0, Note = "hello world" });
+
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 4, SessionDetailId = 4, ApplicationUserId = "4", Attend = 1, Note = "hello world" });
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 4, SessionDetailId = 4, ApplicationUserId = "5", Attend = 0, Note = "hello world" });
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 4, SessionDetailId = 4, ApplicationUserId = "6", Attend = 1, Note = "hello world" });
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 4, SessionDetailId = 4, ApplicationUserId = "7", Attend = 1, Note = "hello world" });
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 4, SessionDetailId = 4, ApplicationUserId = "8", Attend = 1, Note = "hello world" });
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 4, SessionDetailId = 4, ApplicationUserId = "9", Attend = 1, Note = "hello world" });
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 4, SessionDetailId = 4, ApplicationUserId = "10", Attend = 1, Note = "hello world" });
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 4, SessionDetailId = 4, ApplicationUserId = "11", Attend = 1, Note = "hello world" });
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 4, SessionDetailId = 4, ApplicationUserId = "12", Attend = 1, Note = "hello world" });
+            context.Attendances.AddOrUpdate(new Attendance { AttendanceId = 4, SessionDetailId = 4, ApplicationUserId = "13", Attend = 0, Note = "hello world" });
 
             base.Seed(context);
         }
