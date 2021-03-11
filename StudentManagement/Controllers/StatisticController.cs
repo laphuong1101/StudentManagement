@@ -27,8 +27,8 @@ namespace StudentManagement.Controllers
             {
                 return RedirectToAction("Index");
             }
-            var ListSessionDetail = db.SessionDetails.Where(x => x.SessionDetailId == Id).ToList();
-            var numberSessionComplete = db.SessionDetails.Where(x => x.Status == SessionDetail.SessionDetailStatus.DONE).ToList().Count;
+            var ListSessionDetail = db.SessionDetails.Where(x => x.SessionId == Id).ToList();
+            var numberSessionComplete = db.SessionDetails.Where(x => x.Status == SessionDetail.SessionDetailStatus.DONE && x.SessionId == Id).ToList().Count;
             var session = db.Sessions.Find(Id);
             ViewData["SubjectName"] = "";
             ViewData["numberSession"] = 0;
@@ -56,7 +56,7 @@ namespace StudentManagement.Controllers
             ViewData["session"] = session;
             ViewData["numberSessionComplete"] = numberSessionComplete;
             ViewData["ListStudent"] = lstStudent;
-           
+            ViewData["sessionId"] = Id;
             return View();
         }
     }

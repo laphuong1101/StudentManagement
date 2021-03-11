@@ -16,8 +16,8 @@ namespace StudentManagement.Controllers
         public ActionResult GetListTimetableStudent()
         { 
             var userID = User.Identity.GetUserId();
-            //var listTimetable = db.Sessions.Where(x => x.EndTime >= DateTime.Now).ToList();
-            var listTimetable = db.Sessions.Where(x => x.EndTime < DateTime.Now).ToList();
+            var listTimetable = db.Sessions.Where(x => x.EndTime >= DateTime.Now).ToList();
+            //var listTimetable = db.Sessions.Where(x => x.EndTime < DateTime.Now).ToList();
             var timetableStudent = new List<SessionDetail>();
             var listSession = new List<Session>();
             foreach (var session in listTimetable)

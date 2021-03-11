@@ -45,7 +45,7 @@
                 <!-- Item -->
                 @foreach (var item in (List<StudentManagement.Models.SessionDetail>)ViewData["timetableStudent"])
                 {
-                    if (item.SessionDetailId == it.SessionId)
+                    if ((int)item.SessionId == (int)it.SessionId)
                     {
                     <tr>
                         <td>
