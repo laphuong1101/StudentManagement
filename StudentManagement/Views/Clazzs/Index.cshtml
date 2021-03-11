@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Danh sách lớp học</h2>
+<h4>Danh sách lớp học</h4>
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
     <div>
@@ -29,9 +29,6 @@
                     @Html.DisplayNameFor(model => model.ClazzName)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.ListStudentId)
-                </th>
-                <th>
                     @Html.DisplayNameFor(model => model.Description)
                 </th>
                 <th>
@@ -51,9 +48,6 @@
                         @Html.DisplayFor(modelItem => item.ClazzName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.ListStudentId)
-                    </td>
-                    <td>
                         @Html.DisplayFor(modelItem => item.Description)
                     </td>
                     <td>
@@ -68,10 +62,10 @@
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>
                             <div class="dropdown-menu py-0">
-                                <a class="dropdown-item rounded-top" href="@Url.Action("Edit", "Clazzs", new { id = item.ClazzId })">
+                                <a class="dropdown-item rounded-top" href="@Url.Action("Details", "Clazzs", new { id = item.ClazzId })">
                                     <span class="fas fa-eye me-2"></span>Chi tiết
                                 </a>
-                                <a class="dropdown-item" href="@Url.Action("Details", "Clazzs", new { id = item.ClazzId })">
+                                <a class="dropdown-item" href="@Url.Action("Edit", "Clazzs", new { id = item.ClazzId })">
                                     <span class="fas fa-edit me-2"></span>Sửa
                                 </a>
                                 <a class="dropdown-item text-danger rounded-bottom" href="@Url.Action("Delete", "Clazzs", new { id = item.ClazzId })">

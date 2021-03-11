@@ -5,55 +5,62 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<p class="text-left">
+    <a href="@Url.Action("Index", "Clazzs")" class="text-gray-700"><i class="fas fa-angle-left me-2"></i> Quay lại danh sách</a>
+</p>
+
+<h4>Danh sách sinh viên</h4>
 
 <div>
-    <h4>Clazz</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ClazzName)
-        </dt>
+    <div class="">
+        <span class="me-3">
+            @Html.DisplayNameFor(model => model.ClazzName):
+            <span class="fw-bolder">@Html.DisplayFor(model => model.ClazzName)</span>
+        </span>
 
-        <dd>
-            @Html.DisplayFor(model => model.ClazzName)
-        </dd>
+        <span class="me-3">
+            @Html.DisplayNameFor(model => model.ClazzCode):
+            <span class="fw-bolder">@Html.DisplayFor(model => model.ClazzCode)</span>
+        </span>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ClazzCode)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ClazzCode)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ListStudentId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ListStudentId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
+        <span>
             @Html.DisplayNameFor(model => model.Status)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>
-
-    </dl>
+            <span class="fw-bolder">@Html.DisplayFor(model => model.Status)</span>
+        </span>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ClazzId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<div class="card card-body shadow-sm table-wrapper mb-3">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Họ và tên</th>
+                <th>MSSV</th>
+                <th>Email</th>
+                <th>Số điện thoại</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Item -->
+            @foreach (var item in (List<StudentManagement.Models.ApplicationUser>)ViewData["ListStudent"])
+            {
+                <tr>
+                    <td>
+                        <span class="fw-normal">@item.Name</span>
+                    </td>
+                    <td>
+                        <span class="fw-normal">@item.RollNumber</span>
+                    </td>
+                    <td>
+                        <span class="fw-normal">@item.Email</span>
+                    </td>
+                    <td>
+                        <span class="fw-normal">@item.PhoneNumber</span>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+

@@ -28,6 +28,7 @@ namespace StudentManagement.Models
 
         [StringLength(255)]
         [Display(Name = "Mô tả")]
+        [DataType(DataType.MultilineText)]
         public string Description { get; set; }
         [Display(Name = "Trạng thái")]
         public ClazzStatus Status { get; set; }
