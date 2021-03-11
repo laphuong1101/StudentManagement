@@ -1,4 +1,6 @@
-﻿using StudentManagement.Models;
+﻿using Microsoft.AspNet.Identity;
+using StudentManagement.Common;
+using StudentManagement.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -7,22 +9,24 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace StudentManagement.Controllers
-{
+{    
     public class StatisticController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: Statistic
         public ActionResult Index()
         {
-
-            return View(db.Sessions.ToList());
+            var userID = User.Identity.GetUserId();
+            var ListSession = db.Sessions.Where(x => x.ApplicationUserId == userID).ToList();
+            ViewData["ListSession"] = ListSession;
+            return View();
         }
 
-        public ActionResult GetDetailSession(int Id)
+        public ActionResult GetDetailSession(int? Id)
         {
             if (Id == null)
             {
-                return Redirect("Index");
+                return RedirectToAction("Index");
             }
             var ListSessionDetail = db.SessionDetails.Where(x => x.SessionDetailId == Id).ToList();
             var numberSessionComplete = db.SessionDetails.Where(x => x.Status == SessionDetail.SessionDetailStatus.DONE).ToList().Count;

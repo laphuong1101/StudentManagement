@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Linq;
@@ -53,6 +54,12 @@ namespace StudentManagement.Models
                     db.Attendances.Where(x => x.ApplicationUserId == UserId && x.Attend == 1).ToList().Count;
                 return numberAttend;
             }
+        }
+
+        public int CalculatorPercentAttend(int numberAttend, int numberSession)
+        {
+            var Percent = (double)(numberAttend / numberSession) * 100;
+            return (int)Math.Round(Percent);
         }
     }
 

@@ -113,7 +113,13 @@
                 </td>
                 <td>
                     <span class="fw-normal">
-                        @item.GetNumberAttend(item.Id.ToString())/@ViewData["numberSession"]
+                        @{ 
+                            var numberAttend = item.GetNumberAttend(item.Id.ToString());
+                            var numberSession = (int)ViewData["numberSession"];
+                        }
+
+                        @numberAttend/@numberSession
+                        (@item.CalculatorPercentAttend(numberAttend, numberSession)%)
                     </span>
                 </td>
             </tr>
