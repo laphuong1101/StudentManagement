@@ -57,6 +57,10 @@ namespace StudentManagement.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("GetProfile", "Account");
+            }
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
@@ -448,7 +452,7 @@ namespace StudentManagement.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return View("Profile");
+            return RedirectToAction("GetProfile", "Account");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult
@@ -485,9 +489,13 @@ namespace StudentManagement.Controllers
             return View("TableTemplate");
         }
         [AllowAnonymous]
-        public ActionResult Profile()
+        public ActionResult GetProfile()
         {
-            return View("Profile");
+            using (var db = new ApplicationDbContext())
+            {
+                var currentUser = db.Users.Find(User.Identity.GetUserId());
+                return View("Profile", currentUser);
+            }
         }
     }
 }

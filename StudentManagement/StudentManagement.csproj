@@ -167,6 +167,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Common\Constants.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ClazzsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -193,6 +194,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\img\team\user-image.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />

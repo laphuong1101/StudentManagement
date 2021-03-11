@@ -1,4 +1,5 @@
-﻿@{
+﻿@model StudentManagement.Models.ApplicationUser
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "My Profile";
 }
@@ -12,14 +13,16 @@
                     <div class="col-md-6 mb-3">
                         <div>
                             <label for="first_name">Họ và Tên</label>
-                            <input class="form-control" id="first_name" type="text" placeholder="Nhập họ và tên" required>
+                            <input class="form-control" id="first_name" type="text" placeholder="Nhập họ và tên" required
+                                   disabled value="@Model.Name">
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label for="birthday">Ngày sinh</label>
+                        <label for="birthday">User Code</label>
                         <div class="input-group">
                             <span class="input-group-text"><span class="far fa-calendar-alt"></span></span>
-                            <input data-datepicker="" class="form-control" id="birthday" type="text" placeholder="dd/mm/yyyy" required>
+                            <input class="form-control" type="text" placeholder="SV20193010" required
+                                   disabled value="@Model.RollNumber">
                         </div>
                     </div>
                 </div>
@@ -27,12 +30,13 @@
                     <div class="col-md-6 mb-3">
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input class="form-control" id="email" type="email" placeholder="name@gmail.com" required>
+                            <input class="form-control" id="email" type="email" placeholder="name@gmail.com" 
+                                   required disabled value="@Model.Email">
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="gender">Giới tính</label>
-                        <select class="form-select mb-0" id="gender" aria-label="Gender select example">
+                        <select class="form-select mb-0" id="gender" aria-label="Gender select example" disabled>
                             <option selected>Gender</option>
                             <option value="1">Nữ</option>
                             <option value="2">Name</option>
@@ -44,7 +48,8 @@
                     <div class="col-md-6 mb-3">
                         <div class="form-group">
                             <label for="phone">Phone</label>
-                            <input class="form-control" id="phone" type="number" placeholder="03********">
+                            <input class="form-control" id="phone" type="number" placeholder="0987654321"
+                                   disabled value="@Model.PhoneNumber">
                         </div>
                     </div>
                 </div>
@@ -53,13 +58,13 @@
                     <div class="col-sm-6 mb-3">
                         <div class="form-group">
                             <label for="city">Thành phố</label>
-                            <input class="form-control" id="city" type="text" placeholder="Thành phố">
+                            <input class="form-control" id="city" type="text" placeholder="Thành phố" disabled>
                         </div>
                     </div>
                     <div class="col-sm-6 mb-3">
                         <div class="form-group">
                             <label for="city">Quận/Huyện</label>
-                            <input class="form-control" id="city" type="text" placeholder="Quận/Huyện">
+                            <input class="form-control" id="city" type="text" placeholder="Quận/Huyện" disabled>
                         </div>
                     </div>
                 </div>
@@ -67,19 +72,16 @@
                     <div class="col-sm-8 mb-3">
                         <div class="form-group">
                             <label for="address">Địa chỉ</label>
-                            <input class="form-control" id="address" type="text" placeholder="Nhập địa chỉ" required>
+                            <input class="form-control" id="address" type="text" placeholder="Nhập địa chỉ" required
+                                   disabled value="@Model.Address">
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="zip">ZIP</label>
-                            <input class="form-control" id="zip" type="tel" placeholder="ZIP">
+                            <input class="form-control" id="zip" type="tel" placeholder="ZIP" disabled>
                         </div>
                     </div>
-                </div>
-
-                <div class="mt-3">
-                    <button type="submit" class="btn btn-dark">Lưu</button>
                 </div>
             </form>
         </div>
@@ -90,10 +92,11 @@
                 <div class="card shadow-sm text-center p-0">
                     <div class="profile-cover rounded-top" data-background="../../assets/img/team/profile-picture-3.jpg"></div>
                     <div class="card-body pb-5">
-                        <img src="../assets/img/team/profile-picture-3.jpg" class="user-avatar large-avatar rounded-circle mx-auto mt-n7 mb-4" alt="Neil Portrait">
-                        <h4 class="h3">La Văn Phương</h4>
-                        <h5 class="fw-normal">Sinh viên năm 4</h5>
-                        <p class="text-gray mb-4">Số 8, Tôn Thất Thuyết, Mỹ Đình 2, Nam Từ Liêm, TP.Hà Nội</p>
+                        <img src="@Model.Avatar ? @Model.Avatar : ../assets/img/team/profile-picture-3.jpg" class="user-avatar large-avatar rounded-circle mx-auto mt-n7 mb-4" alt="Neil Portrait">
+                        <h4 class="h3">
+                            @User.Identity.Name
+                        </h4>
+                        <p class="text-gray">@Model.Address</p>
                         @*<a class="btn btn-sm btn-dark me-2" href="#"><span class="fas fa-user-plus me-1"></span> Connect</a>
                         <a class="btn btn-sm btn-secondary" href="#">Send Message</a>*@
                     </div>
