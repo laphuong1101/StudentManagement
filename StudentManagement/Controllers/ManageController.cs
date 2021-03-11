@@ -13,6 +13,7 @@ namespace StudentManagement.Controllers
     [Authorize]
     public class ManageController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -64,13 +65,21 @@ namespace StudentManagement.Controllers
                 : "";
 
             var userId = User.Identity.GetUserId();
-            var model = new IndexViewModel
+            var user = db.Users.SingleOrDefault(id => id.Id == userId);
+
+            var model = new IndexViewModel()
             {
+                Avatar = user.Avatar,
+                Name = user.Name,
+                Email = user.Email,
+                Addr = user.Address,
+                Desc = user.Description,
                 HasPassword = HasPassword(),
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await UserManager.GetLoginsAsync(userId),
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
+                
             };
             return View(model);
         }
