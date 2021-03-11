@@ -4,6 +4,10 @@
 }
 
 <h2>@ViewBag.Title.</h2>
+@if (ViewBag.Notify != null)
+{
+    <label>@ViewBag.Notify</label>
+}
 
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
