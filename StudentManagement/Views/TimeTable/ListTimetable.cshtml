@@ -1,0 +1,82 @@
+﻿@model IEnumerable<StudentManagement.Models.SessionDetail>
+@{
+    ViewBag.Title = "ListTimetable";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
+    <div class="d-block mb-4 mb-md-0">
+        <h2 class="h4">Lịch học</h2>
+    </div>
+</div>
+<div class="table-settings mb-4">
+    <div class="row align-items-center justify-content-between">
+        <div class="col col-md-6 col-lg-3 col-xl-4">
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon2"><span class="fas fa-search"></span></span>
+                <input type="text" class="form-control" id="exampleInputIconLeft" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2">
+            </div>
+        </div>
+    </div>
+</div>
+
+@foreach (var it in (List<StudentManagement.Models.Session>)ViewData["listSession"])
+{
+    <div class="mb-2">
+        <span style="font-weight:500">
+            <b>
+                @it.Subject.SubjectName - @it.Clazz.ClazzName
+            </b>
+        </span>
+    </div>
+    <div class="card card-body shadow-sm table-wrapper mb-4">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Buổi</th>
+                    <th>Ngày</th>
+                    <th>Phòng học</th>
+                    <th>Môn học</th>
+                    <th>Tên lớp</th>
+                    <th>Giảng viên</th>
+                    <th>Giờ học</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Item -->
+                @foreach (var item in (List<StudentManagement.Models.SessionDetail>)ViewData["timetableStudent"])
+                {
+                    if (item.SessionDetailId == it.SessionId)
+                    {
+                        <tr>
+                            <td>
+                                <span class="fw-normal">@item.SessionDetailName</span>
+                            </td>
+                            <td>
+                                <span class="fw-normal">@item.DateStart.ToString("dd/MM/yyyy")</span>
+                            </td>
+                            <td>
+                                <span class="fw-normal">@item.Session.Room.RoomName</span>
+                            </td>
+                            <td>
+                                <span class="fw-normal">@item.Session.Subject.SubjectName</span>
+                            </td>
+                            <td><span class="fw-normal">@item.Session.Clazz.ClazzName</span></td>
+                            <td><span class="fw-normal">@item.Session.ApplicationUser.UserName</span></td>
+                            <td>
+                                <span class="fw-normal">
+                                    @item.Session.StartTime - @item.Session.FinishTime
+                                </span>
+                            </td>
+                        </tr>
+                    }
+                }
+
+                <!-- Item -->
+            </tbody>
+        </table>
+    </div>
+}
+
+
+

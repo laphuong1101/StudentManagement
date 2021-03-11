@@ -173,6 +173,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StatisticController.cs" />
+    <Compile Include="Controllers\TimeTableController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -270,6 +271,8 @@
     <Content Include="Views\Clazzs\Details.cshtml" />
     <Content Include="Views\Clazzs\Edit.cshtml" />
     <Content Include="Views\Clazzs\Index.cshtml" />
+    <Content Include="Views\TimeTable\ListTimetable.cshtml" />
+    <Content Include="Views\TimeTable\ListAttendStudent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

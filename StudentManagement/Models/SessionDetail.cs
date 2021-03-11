@@ -45,5 +45,18 @@ namespace StudentManagement.Models
             [Display(Name = "On Going")]
             ONGOING
         }
+
+        public bool IsAttend(string userID, int sessionDetailID)
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                var result = db.Attendances.Any(x => x.ApplicationUserId == userID.ToString() && x.SessionDetailId == sessionDetailID && x.Attend == 1);
+                if (result)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
     }
 }
