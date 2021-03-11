@@ -61,16 +61,16 @@
             {
             <tr>
                 <td>
-                    <span class="fw-normal">@item.SessionId</span>
+                    <span class="fw-normal">@item.SessionDetailName</span>
                 </td>
                 <td>
-                    <span class="fw-normal">@item.RoomId</span>
+                    <span class="fw-normal">@item.Session.Room.RoomName</span>
                 </td>
                 <td>
-                    <span class="fw-normal">@item.DateStart</span>
+                    <span class="fw-normal">@item.DateStart.ToString("dd/MM/yyyy")</span>
                 </td>
                 <td>
-                    <span class="fw-normal">@item.Status</span>
+                    <span class="fw-normal text-danger">@item.Status</span>
                 </td>
             </tr>
             }
@@ -112,14 +112,22 @@
                     <span class="fw-normal">@item.PhoneNumber</span>
                 </td>
                 <td>
-                    <span class="fw-normal">
-                        @{ 
-                            var numberAttend = item.GetNumberAttend(item.Id.ToString());
+                    <span class="fw-normal text-danger">
+                        @{
+                            var numberAttend = item.GetNumberAttend(item.Id.ToString(), (int)ViewData["sessionId"]);
                             var numberSession = (int)ViewData["numberSession"];
+                            var numberSessionComplete = (int)ViewData["numberSessionComplete"];
                         }
 
                         @numberAttend/@numberSession
-                        (@item.CalculatorPercentAttend(numberAttend, numberSession)%)
+                        (@if(numberSessionComplete == 0)
+                        {
+                            <span>(0%)</span>
+                        }
+                        else
+                        {
+                            <span>@item.CalculatorPercentAttend(numberAttend, numberSessionComplete)%)</span>
+                        }
                     </span>
                 </td>
             </tr>

@@ -46,20 +46,28 @@ namespace StudentManagement.Models
             return userIdentity;
         }
 
-        public int GetNumberAttend(string UserId)
+        public int GetNumberAttend(string UserId, int sessionId)
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                var numberAttend = 
-                    db.Attendances.Where(x => x.ApplicationUserId == UserId && x.Attend == 1).ToList().Count;
+                var sessionDetail = db.SessionDetails.Where(x => x.SessionId == sessionId).ToList();
+                var numberAttend = 0;
+                foreach (var item in sessionDetail)
+                {
+                    var result = db.Attendances.Where(x => x.ApplicationUserId == UserId && x.Attend == 1 && x.SessionDetailId == item.SessionDetailId).ToList();
+                    if (result.Count > 0)
+                    {
+                        numberAttend += 1;
+                    }
+                }
                 return numberAttend;
             }
         }
 
-        public int CalculatorPercentAttend(int numberAttend, int numberSession)
+        public double CalculatorPercentAttend(int numberAttend, int numberSession)
         {
-            var Percent = (double)(numberAttend / numberSession) * 100;
-            return (int)Math.Round(Percent);
+            var Percent = ((double)numberAttend / (double)numberSession) * 100;
+            return Math.Round(Percent);
         }
     }
 
