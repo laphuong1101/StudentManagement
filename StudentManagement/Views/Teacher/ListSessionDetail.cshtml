@@ -1,0 +1,51 @@
+﻿@model IEnumerable<StudentManagement.Models.SessionDetail>
+@{
+    ViewBag.Title = "ListSessionDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
+    <div class="d-block mb-4 mb-md-0">
+        <h2 class="h4">Danh Sách Buổi Học</h2>
+    </div>
+</div>
+@if (Model != null)
+{
+    <div class="table-settings mb-4">
+        <div class="row align-items-center justify-content-between">
+            <div class="col col-md-6 col-lg-3 col-xl-4">
+                <div class="input-group">
+                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-search"></span></span>
+                    <input type="text" class="form-control" id="exampleInputIconLeft" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card card-body shadow-sm table-wrapper table-responsive mb-3">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Tên</th>
+                    <th>Ngày Bắt Đầu</th>
+                    <th>Mã</th>
+                    <th>Trạng Thái</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Item -->
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>@item.SessionDetailName</td>
+                    <td>@item.SessionDetailCode</td>
+                    <td>@item.DateStart.ToString("dd/MM/yyyy")</td>
+                    <td>@item.Status</td>
+                </tr>
+                }
+                <!-- Item -->
+            </tbody>
+        </table>
+    </div>
+}
+

@@ -173,6 +173,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StatisticController.cs" />
+    <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="Controllers\TimeTableController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -190,6 +191,7 @@
     <Compile Include="Models\Room.cs" />
     <Compile Include="Models\Session.cs" />
     <Compile Include="Models\SessionDetail.cs" />
+    <Compile Include="Models\StudentModelAjax.cs" />
     <Compile Include="Models\Subject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -273,6 +275,12 @@
     <Content Include="Views\Clazzs\Index.cshtml" />
     <Content Include="Views\TimeTable\ListTimetable.cshtml" />
     <Content Include="Views\TimeTable\ListAttendStudent.cshtml" />
+    <Content Include="Views\Teacher\Index.cshtml" />
+    <Content Include="Views\Teacher\SessionDetail.cshtml" />
+    <Content Include="Views\Teacher\Attendance.cshtml" />
+    <Content Include="Views\Teacher\ListSubject.cshtml" />
+    <Content Include="Views\Teacher\ListSessionDetail.cshtml" />
+    <Content Include="Views\Teacher\ListStudent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

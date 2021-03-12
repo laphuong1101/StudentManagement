@@ -120,6 +120,12 @@
                         <span class="sidebar-text">Báo cáo thống kê</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Index", "Teacher")">
+                        <span class="sidebar-icon"><span class="fas fa-file-alt"></span></span>
+                        <span class="sidebar-text">Danh Sách Lớp Học</span>
+                    </a>
+                </li>
             }
 
             @if (User.IsInRole(StudentManagement.Common.Roles.Manager))
