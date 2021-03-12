@@ -1,0 +1,46 @@
+﻿@model StudentManagement.Models.SessionDetail
+
+@{
+    ViewBag.Title = "SessionDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>SessionDetail</h2>
+@if (Model != null)
+{
+    <div class="card card-body shadow-sm table-wrapper table-responsive mb-3">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Tên</th>
+                    <th>Ngày Bắt Đầu</th>
+                    <th>Trạng Thái</th>
+                    <th>Điểm Danh</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Item -->
+                <tr>
+                    <td>@Model.SessionDetailName</td>
+                    <td>@Model.DateStart.ToString("dd/MM/yyyy")</td>
+                    <td>@Model.Status</td>
+                    @if (ViewBag.Attend == 1)
+                    {
+                        <td>@Html.ActionLink("Attendance", "Attendance", new { id = Model.SessionDetailId }, new { @class = "btn btn-info" }.@class)</td>
+                    }
+                    else
+                    {
+                        <td>@Html.ActionLink("Attendance", "Index", new { id = Model.SessionDetailId }, new { @class = "btn btn-info" }.@class)</td>
+
+                    }
+                </tr>
+                <!-- Item -->
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <h2>Buổi Học Hôm Nay Đã Được Điểm Danh</h2>
+}
+

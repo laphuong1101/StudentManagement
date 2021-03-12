@@ -1,0 +1,126 @@
+﻿@model IEnumerable<StudentManagement.Models.ApplicationUser>
+@{
+    ViewBag.Title = "Attendance";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Attendance</h2>
+@if (Model != null)
+{
+    <input hidden id="IdSSDetail" value=@ViewBag.IdSSdetail>
+    <div class="card card-body shadow-sm table-wrapper table-responsive mb-3">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Address</th>
+                    <th>Email</th>
+                    <th>RollNumber</th>
+                    <th>Avatar</th>
+                    <th>Attendant</th>
+                    <th>Absent</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Item -->
+                @foreach (var item in Model)
+                {
+                    <tr class="list-student">
+                        <td>@item.Name</td>
+                        <td>@item.Address</td>
+                        <td>@item.Email</td>
+                        <td>@item.RollNumber</td>
+                        <td><img src="@item.Avatar" style="width:25px;height:25px" /></td>
+                        <td><input type="radio" name="@item.Id" value="@item.Id" class="attend"></td>
+                        <td><input type="radio" name="@item.Id" value="@item.Id"></td>
+                    </tr>
+                }
+                <!-- Item -->
+            </tbody>
+            <tfoot>
+
+            </tfoot>
+
+        </table>
+        <hr />
+        <button type="button" class="btn btn-success" id="btnSave">Save</button>
+    </div>
+}
+
+
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('#btnSave').click(function () {
+                var validRadio = new Array();
+                $('tr.list-student').each(function () {
+                    if ($(this).find('input[type="radio"]:checked').length > 0) {
+                        validRadio.push(true);
+                    } else {
+                        validRadio.push(false);
+                    }
+                });
+
+                //   console.log(validRadio);
+                function checkAdult(a) {
+                    return a == false;
+                }
+
+                if (validRadio.findIndex(checkAdult) >= 0) {
+                    alert("select student to attend")
+                } else {
+                    //   alert(1)
+                    var selectedID = new Array();
+                    var idSSDetail = parseInt($("#IdSSDetail").val(), 10);
+                    $('input:radio.attend').each(function () {
+                        var idStudent = $(this).val();
+                        if ($(this).prop('checked')) {
+
+                            var student = {
+                                idSSDetail: idSSDetail,
+                                idStudent: idStudent,
+                                attend: 1
+                            }
+                        } else {
+
+                            var student = {
+                                idSSDetail: idSSDetail,
+                                idStudent: idStudent,
+                                attend: 0
+                            }
+
+                        }
+
+                        selectedID.push(student);
+                    });
+                    //   console.log(selectedID)
+
+
+                    if (selectedID.length <= 0) {
+                        alert("select student to attendance !")
+                        return;
+                    } else {
+                        $.ajax({
+                            url: "/Teacher/AttendanceResult",
+                            method: "POST",
+                            dataType: "json",
+                            traditional: true,
+                            data: { selectedID: JSON.stringify(selectedID), idSSDetail: idSSDetail },
+                            success: function (data) {
+                                if (data.code == 200) {
+                                    alert("Attendance Success")
+                                    $('#btnSave').attr("disabled", true);
+                                    location.href = "/Teacher/Index"
+                                } else {
+                                    alert("Attendance Fail")
+                                }
+                            }
+                        });
+                    }
+                }
+            })
+        })
+    </script>
+}
+
