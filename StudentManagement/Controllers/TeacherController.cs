@@ -63,6 +63,7 @@ namespace StudentManagement.Controllers
                         }
 
                         SSDetail = detail;
+                        return View(SSDetail);
                     }
                     else
                     {
